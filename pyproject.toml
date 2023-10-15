@@ -40,6 +40,9 @@ webxdcbot = "webxdcbot:main"
 
 [tool.setuptools]
 packages = [ "webxdcbot" ]
+zip-safe = false
+include-package-data = true
+
 
 [tool.isort]
 profile = "black"
