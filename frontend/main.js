@@ -15,28 +15,28 @@ window.sendMsg = () => {
 
   window.webxdc.sendUpdate(
     {
-        payload: {
-            request: {
-                name: window.webxdc.selfName,
-                text,
-            }
-        }
+      payload: {
+        request: {
+          name: window.webxdc.selfName,
+          text,
+        },
+      },
     },
     "",
   );
 };
 
 window.webxdc.setUpdateListener(function (update) {
-    const chat = document.getElementById("chat-area");
-    const msg = update.payload.request || update.payload.response;
-    chat.append(
-        h(
-            "p",
-            { class: "msg" },
-            h("span", { class: "nick" }, msg.name, ": "),
-            msg.text,
-        ),
-    );
+  const chat = document.getElementById("chat-area");
+  const msg = update.payload.request || update.payload.response;
+  chat.append(
+    h(
+      "p",
+      { class: "msg" },
+      h("span", { class: "nick" }, msg.name, ": "),
+      msg.text,
+    ),
+  );
 });
 
 window.deviceName.innerHTML = "You are: " + window.webxdc.selfName;
