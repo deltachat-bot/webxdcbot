@@ -40,6 +40,7 @@ Run `webxdcbot --help` to see all available options.
 
 ## Usage
 
-Write to the bot in Delta Chat, for example send a "hi" message to it,
-the bot will reply with the webxdc app, open the app and send a message there,
-the bot will reply to you inside the app
+1. Write to the bot in Delta Chat, for example send a "hi" message to it
+2. The bot will reply with the webxdc app
+3. Open the webxdc app and send a message there
+4. The bot will reply to you inside the app
