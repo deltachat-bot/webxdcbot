@@ -22,7 +22,7 @@ This program depends on a standalone Delta Chat RPC server `deltachat-rpc-server
 available in your `PATH`. To install it check:
 https://github.com/deltachat/deltachat-core-rust/tree/master/deltachat-rpc-server
 
-## Usage
+## Configuration
 
 Configure the bot:
 
@@ -37,3 +37,9 @@ webxdcbot serve
 ```
 
 Run `webxdcbot --help` to see all available options.
+
+## Usage
+
+Write to the bot in Delta Chat, for example send a "hi" message to it,
+the bot will reply with the webxdc app, open the app and send a message there,
+the bot will reply to you inside the app
