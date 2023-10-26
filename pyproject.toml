@@ -18,7 +18,7 @@ classifiers = [
   "Programming Language :: Python"
 ]
 dependencies = [
-    "deltabot-cli",
+    "deltabot-cli>=0.1.0",
     "fortune-python",
 ]
 
