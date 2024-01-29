@@ -1,4 +1,5 @@
 """Example processing of incoming webxdc status updates."""
+
 from fortune import fortune
 
 
