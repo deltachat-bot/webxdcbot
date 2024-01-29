@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Minimal bot + webxdc example."""
 
+import json
 import logging
 from pathlib import Path
 
-from deltabot_cli import BotCli, EventType, events
-from deltachat_rpc_client.const import ChatType
+from deltabot_cli import BotCli, ChatType, EventType, events
 
 from .app import get_response
 
@@ -16,22 +16,30 @@ XDC_PATH = str(Path(__file__).parent / "app.xdc")
 @cli.on(events.RawEvent)
 def on_event(event):
     """process webxdc status updates"""
-    if event.type == EventType.WEBXDC_STATUS_UPDATE:
+    if event.kind == EventType.WEBXDC_STATUS_UPDATE:
         logging.info(event)
-        msg = event.account.get_message_by_id(event.msg_id)
-        update = msg.get_webxdc_status_updates(event.status_update_serial - 1)[0]
+        rpc = event.rpc
+        accid = event.accid
+        msgid = event.msg_id
+        serial = event.status_update_serial - 1
+        update = json.loads(rpc.get_webxdc_status_updates(accid, msgid, serial))[0]
         resp = get_response(update["payload"])
         if resp:
-            msg.send_webxdc_status_update(resp, resp.get("info", ""))
+            rpc.send_webxdc_status_update(
+                accid, msgid, json.dumps(resp), resp.get("info", "")
+            )
 
 
 @cli.on(events.NewMessage)
 def send_app(event):
     """send the webxdc app on every 1:1 (private) message"""
-    if event.message_snapshot.chat.get_basic_snapshot().chat_type != ChatType.SINGLE:
+    rpc = event.rpc
+    accid = event.accid
+    chatid = event.msg.chat_id
+    if rpc.get_basic_chat_info(accid, chatid).chat_type != ChatType.SINGLE:
         return
-    logging.info(f"new 1:1 message: {event.message_snapshot.text!r}")
-    event.message_snapshot.chat.send_message(file=XDC_PATH)
+    logging.info(f"new 1:1 message: {event.msg.text!r}")
+    rpc.send_msg(accid, chatid, {"file": XDC_PATH})
 
 
 def main():

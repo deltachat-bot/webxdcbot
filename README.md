@@ -16,12 +16,6 @@ cd ..
 pip install .
 ```
 
-### Installing deltachat-rpc-server
-
-This package depends on a standalone Delta Chat RPC server `deltachat-rpc-server` program.
-To install it check:
-https://github.com/deltachat/deltachat-core-rust/tree/master/deltachat-rpc-server
-
 ## Configuration
 
 Configure the bot:

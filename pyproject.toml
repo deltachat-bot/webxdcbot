@@ -3,22 +3,22 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-version = "0.1.0"
+version = "0.2.0"
 name = "webxdcbot"
 description = "Example Delta Chat bot + webxdc app"
 readme = "README.md"
 requires-python = ">=3.8"
 license = {file = "LICENSE.txt"}
-keywords = ["deltachat", "bot"]
+keywords = ["deltachat", "bot", "webxdc"]
 authors = [
-  {name = "adbenitez", email = "adbenitez@hispanilandia.net"},
+  {name = "adbenitez", email = "adbenitez@merlinux.eu"},
 ]
 classifiers = [
   "Development Status :: 4 - Beta",
   "Programming Language :: Python"
 ]
 dependencies = [
-    "deltabot-cli>=0.1.0",
+    "deltabot-cli>=1.0.0",
     "fortune-python",
 ]
 
