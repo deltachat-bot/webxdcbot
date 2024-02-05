@@ -1,24 +1,24 @@
 [build-system]
-requires = ["setuptools"]
+requires = ["setuptools>=64", "setuptools_scm>=8"]
 build-backend = "setuptools.build_meta"
 
 [project]
-version = "0.3.0"
 name = "webxdcbot"
 description = "Example Delta Chat bot + webxdc app"
+dynamic = ["version"]
 readme = "README.md"
 requires-python = ">=3.8"
-license = {file = "LICENSE.txt"}
+license = {file = "LICENSE"}
 keywords = ["deltachat", "bot", "webxdc"]
 authors = [
-  {name = "adbenitez", email = "adbenitez@merlinux.eu"},
+  {name = "adbenitez", email = "adb@merlinux.eu"},
 ]
 classifiers = [
   "Development Status :: 4 - Beta",
   "Programming Language :: Python"
 ]
 dependencies = [
-    "deltabot-cli>=2.0.0,<3.0",
+    "deltabot-cli>=3.0.0,<4.0",
     "fortune-python",
 ]
 
@@ -34,6 +34,9 @@ dev = [
 
 [project.scripts]
 webxdcbot = "webxdcbot:main"
+
+[tool.setuptools_scm]
+# can be empty if no extra settings are needed, presence enables setuptools_scm
 
 [tool.setuptools]
 packages = [ "webxdcbot" ]
